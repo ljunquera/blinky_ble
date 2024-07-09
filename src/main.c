@@ -1,6 +1,7 @@
 
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
+#include <zephyr/devicetree.h>
 #include <app_version.h>
 
 #include "ble_manager.h"
