@@ -1,0 +1,1 @@
+int ble_manager_init();
