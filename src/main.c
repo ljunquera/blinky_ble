@@ -1,6 +1,7 @@
 
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
+#include <app_version.h>
 
 #include "ble_manager.h"
 #include "button_manager.h"
@@ -12,7 +13,7 @@ LOG_MODULE_REGISTER(main, LOG_LEVEL_DBG);
 
 int main(void)
 {
-	LOG_DBG("Hello World! %s\n", CONFIG_BOARD);
+	LOG_DBG("Hello World! %s (%s)", CONFIG_BOARD, APP_VERSION_STRING);
 
     int err;
 
