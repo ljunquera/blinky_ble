@@ -1,0 +1,5 @@
+/delete-node/ &xt25fb32;
+
+&spi1 {
+    status = "disabled"; 
+};
