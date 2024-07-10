@@ -3,6 +3,7 @@
 
 #include <zephyr/bluetooth/bluetooth.h>
 #include <zephyr/bluetooth/gap.h>
+#include <zephyr/bluetooth/conn.h>
 
 #include "ble_manager.h"
 
@@ -47,6 +48,26 @@ static unsigned char url_data[] ={0x17,'/','/','a','c','a','d','e','m','y','.',
 
 static const struct bt_data sd[] = {
         BT_DATA(BT_DATA_URI, url_data,sizeof(url_data)),
+};
+
+static void connected(struct bt_conn *conn, uint8_t err)
+{
+	if (err) {
+		LOG_ERR("Connection failed (err %u)\n", err);
+		return;
+	}
+
+	LOG_DBG("Connected\n");
+}
+
+static void disconnected(struct bt_conn *conn, uint8_t reason)
+{
+	LOG_DBG("Disconnected (reason %u)\n", reason);
+}
+
+BT_CONN_CB_DEFINE(conn_callbacks) = {
+	.connected        = connected,
+	.disconnected     = disconnected,
 };
 
 
